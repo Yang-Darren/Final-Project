@@ -10,9 +10,9 @@ export default class Navbar extends React.Component {
           </a>
           <div>
             <a href="#sign-in" className="btn btn-dark">
-              Sign In
+              Log in
             </a>
-            <a href="#sign-up" className="btn btn-dark">
+            <a href="#sign-up" className="btn btn-light">
               Sign Up
             </a>
           </div>

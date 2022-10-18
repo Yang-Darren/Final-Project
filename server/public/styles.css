@@ -1,3 +1,8 @@
 .navbar-brand {
   font-size: 30px !important;
 }
+
+.btn-light,
+.btn-dark {
+  border-radius: 50px !important;
+}
