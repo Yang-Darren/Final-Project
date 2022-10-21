@@ -23,7 +23,7 @@ export default class SearchHome extends React.Component {
 
         <div id="search-home">
           <div>
-            <input required name="search" type="text" id="search" />
+            <input required name="city" type="text" id="city" placeholder="Enter location"/>
           </div>
         </div>
         <a href="#request" className="btn btn-dark request">

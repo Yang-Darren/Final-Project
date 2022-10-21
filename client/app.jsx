@@ -8,6 +8,11 @@ export default class App extends React.Component {
     this.state = {};
   }
 
+  componentDidMount() {
+    navigator.geolocation.getCurrentPosition(function (position) {
+    });
+  }
+
   render() {
     return (
       <div>
