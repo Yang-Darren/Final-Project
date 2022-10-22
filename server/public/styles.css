@@ -36,4 +36,9 @@ h1 {
 .request {
   margin-top: 25px;
   margin-left: 20px;
+  margin-bottom: 25px;
+}
+
+li {
+  list-style: none;
 }

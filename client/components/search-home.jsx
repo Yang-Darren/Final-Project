@@ -5,13 +5,9 @@ export default class SearchHome extends React.Component {
     super(props);
     this.state = {
       header: 'View Nearby Locations',
-      request: false
+      request: false,
+      locationText: ''
     };
-  }
-
-  handleChange(event) {
-    const { value } = event.target;
-    this.setState({ value });
   }
 
   render() {
@@ -29,6 +25,7 @@ export default class SearchHome extends React.Component {
         <a href="#request" className="btn btn-dark request">
           Request Now
         </a>
+        <ul />
       </div>
     );
   }
