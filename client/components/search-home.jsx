@@ -1,8 +1,12 @@
 import React from 'react';
+import { Autocomplete } from '@react-google-maps/api';
+import LoadApi from './google-api';
 
 export default class SearchHome extends React.Component {
   constructor(props) {
     super(props);
+    this.autocomplete = null;
+
     this.state = {
       header: 'View Nearby Locations',
       request: false,
@@ -19,7 +23,14 @@ export default class SearchHome extends React.Component {
 
         <div id="search-home">
           <div>
-            <input required name="city" type="text" id="city" placeholder="Enter location"/>
+            <LoadApi>
+              <Autocomplete>
+                <input
+                  type="text"
+                  placeholder="Enter location"
+                 />
+              </Autocomplete>
+            </LoadApi>
           </div>
         </div>
         <a href="#request" className="btn btn-dark request">
