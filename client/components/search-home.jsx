@@ -1,6 +1,4 @@
 import React from 'react';
-import { Autocomplete } from '@react-google-maps/api';
-import LoadApi from './google-api';
 
 export default class SearchHome extends React.Component {
   constructor(props) {
@@ -23,14 +21,7 @@ export default class SearchHome extends React.Component {
 
         <div id="search-home">
           <div>
-            <LoadApi>
-              <Autocomplete>
-                <input
-                  type="text"
-                  placeholder="Enter location"
-                 />
-              </Autocomplete>
-            </LoadApi>
+            <input type="text" placeholder="Enter location"/>
           </div>
         </div>
         <a href="#request" className="btn btn-dark request">
