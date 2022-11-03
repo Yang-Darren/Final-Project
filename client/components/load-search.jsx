@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLoadScript } from '@react-google-maps/api';
-import usePlacesAutocomplete, { getGeocode, getLatLng } from 'use-places-autocomplete';
+import usePlacesAutocomplete from 'use-places-autocomplete';
 import {
   Combobox,
   ComboboxInput,
@@ -28,7 +28,7 @@ export default function Places() {
   }
 }
 
-const PlacesAutocomplete = ({ setSelected }) => {
+const PlacesAutocomplete = () => {
   const {
     ready,
     value,
@@ -40,10 +40,6 @@ const PlacesAutocomplete = ({ setSelected }) => {
   const handleSelect = async address => {
     setValue(address, false);
     clearSuggestions();
-
-    const results = await getGeocode({ address });
-    const { lat, lng } = getLatLng(results[0]);
-    setSelected({ lat, lng });
   };
 
   return (
@@ -52,7 +48,7 @@ const PlacesAutocomplete = ({ setSelected }) => {
         <Combobox onSelect={handleSelect}>
           <ComboboxInput value={value} onChange={e => setValue(e.target.value)} disabled={!ready}
             className="combobox-input" placeholder='Enter Location' />
-          <ComboboxPopover>
+          <ComboboxPopover className='list'>
             <ComboboxList>
               {status === 'OK' &&
             data.map(({ placeId, description }) =>

@@ -41,4 +41,9 @@ h1 {
 
 li {
   list-style: none;
+  border-radius: 10px;
+}
+
+.list {
+  border-radius: 10px;
 }
