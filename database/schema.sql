@@ -40,6 +40,7 @@ CREATE TABLE "public"."locations" (
   "locationId" serial NOT NULL,
   "locationName" TEXT NOT NULL,
   "locationAddress" TEXT NOT NULL,
+  "type" TEXT NOT NULL,
   "city" TEXT NOT NULL,
   "lat" FLOAT NOT NULL,
   "lng" FLOAT NOT NULL,
