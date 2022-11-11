@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLoadScript } from '@react-google-maps/api';
-import usePlacesAutocomplete from 'use-places-autocomplete';
+import usePlacesAutocomplete, { getGeocode } from 'use-places-autocomplete';
 import {
   Combobox,
   ComboboxInput,
@@ -28,7 +28,9 @@ export default function Places() {
   }
 }
 
-const PlacesAutocomplete = () => {
+function PlacesAutocomplete() {
+  const [city, setCity] = useState(null);
+  const [availableLocations, setAvailablelocations] = useState([]);
   const {
     ready,
     value,
@@ -40,6 +42,30 @@ const PlacesAutocomplete = () => {
   const handleSelect = async address => {
     setValue(address, false);
     clearSuggestions();
+
+    const results = await getGeocode({ address });
+    for (let i = 0; i < results[0].address_components.length; i++) {
+      if (results[0].address_components[i].types[0] === 'locality') {
+        const citySearched = results[0].address_components[i].long_name;
+        setCity(citySearched);
+      }
+    }
+  };
+
+  const handleClick = () => {
+
+    fetch('/api/locations/')
+      .then(res => res.json())
+      .then(data => {
+        for (let i = 0; i < data.length; i++) {
+          if (data[i].city === city) {
+            setAvailablelocations(data[i]);
+            return;
+          } else {
+            setAvailablelocations(null);
+          }
+        }
+      });
   };
 
   return (
@@ -57,10 +83,14 @@ const PlacesAutocomplete = () => {
           </ComboboxPopover>
         </Combobox>
       </div>
-      <a href="#request" className="btn btn-dark request">
+      <a onClick={handleClick} href="#request" className="btn btn-dark request">
         Request Now
       </a>
 
+      <ul>
+        { availableLocations.type }
+      </ul>
+
     </div>
   );
-};
+}
