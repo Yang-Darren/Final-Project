@@ -57,14 +57,12 @@ function PlacesAutocomplete() {
     fetch('/api/locations/')
       .then(res => res.json())
       .then(data => {
+        const locationsNear = [];
         for (let i = 0; i < data.length; i++) {
           if (data[i].city === city) {
-            setAvailablelocations(data[i]);
-            return;
-          } else {
-            setAvailablelocations(null);
+            locationsNear.push(data[i]);
           }
-        }
+        } setAvailablelocations(locationsNear);
       });
   };
 
@@ -88,7 +86,9 @@ function PlacesAutocomplete() {
       </a>
 
       <ul>
-        { availableLocations.type }
+        <i className="fa-solid fa-house fa-7x d-inline-flex p-2" />
+        <h3 className='d-flex p-2'>{availableLocations.type}</h3>
+        <p className='d-inline-flex p-2'>{availableLocations.locationAddress}</p>
       </ul>
 
     </div>
