@@ -30,7 +30,7 @@ export default function Places() {
 
 function PlacesAutocomplete() {
   const [city, setCity] = useState(null);
-  const [availableLocations, setAvailablelocations] = useState([]);
+  const [availableLocations, setAvailablelocations] = useState(null);
   const {
     ready,
     value,
@@ -57,12 +57,11 @@ function PlacesAutocomplete() {
     fetch('/api/locations/')
       .then(res => res.json())
       .then(data => {
-        const locationsNear = [];
         for (let i = 0; i < data.length; i++) {
           if (data[i].city === city) {
-            locationsNear.push(data[i]);
+            setAvailablelocations(data[i]);
           }
-        } setAvailablelocations(locationsNear);
+        }
       });
   };
 
@@ -81,15 +80,26 @@ function PlacesAutocomplete() {
           </ComboboxPopover>
         </Combobox>
       </div>
-      <a onClick={handleClick} href="#request" className="btn btn-dark request">
+      <button onClick={handleClick} href="#request" className="btn btn-dark request">
         Request Now
-      </a>
+      </button>
 
-      <ul>
-        <i className="fa-solid fa-house fa-7x d-inline-flex p-2" />
-        <h3 className='d-flex p-2'>{availableLocations.type}</h3>
-        <p className='d-inline-flex p-2'>{availableLocations.locationAddress}</p>
-      </ul>
+      {availableLocations === null &&
+        <>
+        </>
+      }
+      {availableLocations !== null &&
+        <ul id="search-results">
+          <div className="d-flex">
+            <i className="fa-solid fa-house fa-7x col-4" />
+            <div>
+              <h3 className=''>{availableLocations.locationName}</h3>
+              <p className=''>{availableLocations.locationAddress}</p>
+              <button className='btn btn-light'>Reserve Now</button>
+            </div>
+          </div>
+        </ul>
+      }
 
     </div>
   );

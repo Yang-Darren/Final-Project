@@ -47,3 +47,7 @@ li {
 .list {
   border-radius: 10px;
 }
+
+#search-results {
+  margin-top: 25px !important;
+}
