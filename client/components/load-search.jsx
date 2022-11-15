@@ -60,6 +60,9 @@ function PlacesAutocomplete() {
         for (let i = 0; i < data.length; i++) {
           if (data[i].city === city) {
             setAvailablelocations(data[i]);
+            return;
+          } else if (data[i].city !== city) {
+            setAvailablelocations('none');
           }
         }
       });
@@ -88,10 +91,17 @@ function PlacesAutocomplete() {
         <>
         </>
       }
-      {availableLocations !== null &&
+      {availableLocations === 'none' &&
+        <div id="home-page" className='container'>
+          <div>
+            <h2>No Nearby Locations</h2>
+          </div>
+        </div>
+      }
+      {availableLocations !== null && availableLocations !== 'none' &&
         <ul id="search-results">
           <div className="d-flex">
-            <i className="fa-solid fa-house fa-7x col-4" />
+            <i className='fa-solid fa-briefcase fa-7x col-4' />
             <div>
               <h3 className=''>{availableLocations.locationName}</h3>
               <p className=''>{availableLocations.locationAddress}</p>
