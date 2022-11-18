@@ -68,6 +68,15 @@ function PlacesAutocomplete() {
       });
   };
 
+  let locationType = '';
+  if (availableLocations) {
+    if (availableLocations.type === 'Home') {
+      locationType = 'fa-solid fa-house fa-7x col-4';
+    } else if (availableLocations.type === 'Business') {
+      locationType = 'fa-solid fa-briefcase fa-7x col-4';
+    }
+  }
+
   return (
     <div id="home-page" className='container'>
       <div id="search-home">
@@ -91,6 +100,7 @@ function PlacesAutocomplete() {
         <>
         </>
       }
+
       {availableLocations === 'none' &&
         <div id="home-page" className='container'>
           <div>
@@ -98,10 +108,11 @@ function PlacesAutocomplete() {
           </div>
         </div>
       }
+
       {availableLocations !== null && availableLocations !== 'none' &&
         <ul id="search-results">
           <div className="d-flex">
-            <i className='fa-solid fa-briefcase fa-7x col-4' />
+            <i className={locationType} />
             <div>
               <h3 className=''>{availableLocations.locationName}</h3>
               <p className=''>{availableLocations.locationAddress}</p>
