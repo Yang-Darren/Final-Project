@@ -1,0 +1,58 @@
+.navbar-brand {
+  font-size: 30px !important;
+}
+
+.btn-light,
+.btn-dark {
+  border-radius: 50px !important;
+}
+
+#search-home {
+  display: flex !important;
+  justify-content: center !important;
+  padding: 10px !important;
+}
+
+input {
+  width: 450px;
+  border-radius: 10px;
+  background-color: rgb(224, 224, 224);
+  border: none;
+  height: 50px;
+}
+
+h1 {
+  font-weight: bold !important;
+  font-size: 40px !important;
+  margin-top: 10rem !important;
+  text-align: center !important;
+  margin-bottom: 25px !important;
+}
+
+#home-page {
+  width: 520px;
+}
+
+.request {
+  margin-top: 25px;
+  margin-left: 20px;
+  margin-bottom: 25px;
+}
+
+li {
+  list-style: none;
+  border-radius: 10px;
+}
+
+.list {
+  border-radius: 10px;
+}
+
+#search-results {
+  margin-top: 25px !important;
+}
+
+h2 {
+  margin-top: 30px !important;
+  margin-left: 10px;
+}

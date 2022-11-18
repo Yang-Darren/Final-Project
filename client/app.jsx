@@ -1,8 +1,21 @@
 import React from 'react';
-import Home from './pages/home';
+import Navbar from './components/navbar';
+import SearchHome from './components/search-home';
+import Places from './components/load-search';
 
 export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
   render() {
-    return <Home />;
+    return (
+      <div>
+        <Navbar />
+        <SearchHome />
+        <Places />
+      </div>
+    );
   }
 }
