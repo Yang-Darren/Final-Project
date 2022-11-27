@@ -7,9 +7,16 @@ export default class AuthForm extends React.Component {
       username: '',
       password: ''
     };
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(event) {
+    const { name, value } = event.target;
+    this.setState({ [name]: value });
   }
 
   render() {
+    const { handleChange } = this;
 
     return (
       <form className="w-100">
@@ -23,6 +30,7 @@ export default class AuthForm extends React.Component {
             id="username"
             type="text"
             name="username"
+            onChange={handleChange}
             className="form-control bg-light" />
         </div>
         <div className="mb-3">
@@ -34,6 +42,7 @@ export default class AuthForm extends React.Component {
             id="password"
             type="password"
             name="password"
+            onChange={handleChange}
             className="form-control bg-light" />
         </div>
         <div className="d-flex justify-content-between align-items-center">
