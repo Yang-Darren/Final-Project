@@ -14,7 +14,7 @@
 }
 
 input {
-  width: 450px;
+  width: 475px;
   border-radius: 10px;
   background-color: rgb(224, 224, 224);
   border: none;
@@ -55,4 +55,12 @@ li {
 h2 {
   margin-top: 30px !important;
   margin-left: 10px;
+}
+
+.login {
+  margin: auto;
+}
+
+form {
+  width: 500px;
 }

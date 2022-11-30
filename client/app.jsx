@@ -8,6 +8,11 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
+    this.handleLogin = this.handleLogin.bind(this);
+  }
+
+  handleLogin(event) {
+
   }
 
   render() {
