@@ -1,10 +1,12 @@
 import React from 'react';
-import HelloWorld from '../components/hello-world';
+import SearchHome from '../components/search-home';
+import Places from '../components/load-search';
 
 export default function Home(props) {
   return (
     <div>
-      <HelloWorld />
+      <SearchHome />
+      <Places />
     </div>
   );
 }

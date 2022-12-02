@@ -62,7 +62,7 @@ export default class AuthForm extends React.Component {
             type="text"
             name="username"
             onChange={handleChange}
-            className="form-control bg-light" />
+            className="form-control border-0" />
         </div>
         <div className="mb-3">
           <label htmlFor="password" className="form-label">
@@ -74,15 +74,15 @@ export default class AuthForm extends React.Component {
             type="password"
             name="password"
             onChange={handleChange}
-            className="form-control bg-light" />
+            className="form-control border-0" />
         </div>
         <div className="d-flex justify-content-between align-items-center">
           <small>
-            <a className="text-muted" href={alternateActionHref}>
+            <a className="btn btn-light" href={alternateActionHref}>
               {alternatActionText}
             </a>
           </small>
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" className="btn btn-dark">
             {submitButtonText}
           </button>
         </div>
