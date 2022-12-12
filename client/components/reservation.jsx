@@ -10,7 +10,9 @@ export default class Reservation extends React.Component {
 
   render() {
     return (
-      <div />
+      <div>
+        Reservation confirmed
+      </div>
     );
   }
 }
