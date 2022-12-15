@@ -10,7 +10,7 @@ export default class Reservation extends React.Component {
 
   render() {
     return (
-      <div className=''>
+      <div className='test'>
         Reservation confirmed
       </div>
     );
