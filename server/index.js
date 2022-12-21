@@ -95,8 +95,8 @@ app.post('/api/auth/sign-in', (req, res, next) => {
 });
 
 app.post('/api/reservations', (req, res, next) => {
-  const { username, password } = req.body;
-  if (!username || !password) {
+  const { username } = req.body;
+  if (!username) {
     throw new ClientError(401, 'invalid login');
   }
   const sql = `
@@ -114,7 +114,7 @@ app.post('/api/reservations', (req, res, next) => {
       }
       const { userId, hashedPassword } = user;
       return argon2
-        .verify(hashedPassword, password)
+        .verify(hashedPassword)
         .then(isMatching => {
           if (!isMatching) {
             throw new ClientError(401, 'invalid login');
