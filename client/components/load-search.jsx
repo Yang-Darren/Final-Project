@@ -68,6 +68,9 @@ function PlacesAutocomplete() {
       });
   };
 
+  const handleReserve = () => {
+  };
+
   let locationType = '';
   if (availableLocations) {
     if (availableLocations.type === 'Home') {
@@ -116,7 +119,7 @@ function PlacesAutocomplete() {
             <div>
               <h3 className=''>{availableLocations.locationName}</h3>
               <p className=''>{availableLocations.locationAddress}</p>
-              <button className='btn btn-light'>Reserve Now</button>
+              <button onClick={handleReserve} className='btn btn-light'>Reserve Now</button>
             </div>
           </div>
         </ul>
