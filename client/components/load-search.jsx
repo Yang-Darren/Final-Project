@@ -69,6 +69,20 @@ function PlacesAutocomplete() {
   };
 
   const handleReserve = () => {
+    if (availableLocations) {
+      return (
+        <ul id="search-results">
+          <div className="d-flex">
+            <i className={locationType} />
+            <div>
+              <h3 className=''>{availableLocations.locationName}</h3>
+              <p className=''>{availableLocations.locationAddress}</p>
+              <button onClick={handleReserve} className='btn btn-light'>Reserve Now</button>
+            </div>
+          </div>
+        </ul>
+      );
+    }
   };
 
   let locationType = '';
