@@ -6,7 +6,6 @@ import AppContext from './lib/app-context';
 import parseRoute from './lib/parse-route';
 import decodeToken from './lib/decode-token';
 import PageContainer from './components/page-container';
-import Reservation from './components/reservation';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -49,9 +48,6 @@ export default class App extends React.Component {
     }
     if (path === 'sign-in' || path === 'sign-up') {
       return <Auth />;
-    }
-    if (path === 'reserve') {
-      return <Reservation />;
     }
   }
 
