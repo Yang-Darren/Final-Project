@@ -68,3 +68,7 @@ form {
 .public {
   background-color: aliceblue;
 }
+
+.reserved {
+  margin-top: 5rem;
+}

@@ -31,6 +31,7 @@ export default function Places() {
 function PlacesAutocomplete() {
   const [city, setCity] = useState(null);
   const [availableLocations, setAvailablelocations] = useState(null);
+  const [reserved, setReserved] = useState(false);
   const {
     ready,
     value,
@@ -69,18 +70,7 @@ function PlacesAutocomplete() {
   };
 
   const handleReserve = () => {
-    return (
-      <ul id="search-results">
-        <div className="d-flex">
-          <i className={locationType} />
-          <div>
-            <h3 className=''>{availableLocations.locationName}</h3>
-            <p className=''>{availableLocations.locationAddress}</p>
-            <button onClick={handleReserve} className='btn btn-light'>Reserve Now</button>
-          </div>
-        </div>
-      </ul>
-    );
+    setReserved(true);
   };
 
   let locationType = '';
@@ -92,31 +82,47 @@ function PlacesAutocomplete() {
     }
   }
 
-  return (
-    <div id="home-page" className='container'>
-      <div id="search-home">
-        <Combobox onSelect={handleSelect}>
-          <ComboboxInput value={value} onChange={e => setValue(e.target.value)} disabled={!ready}
+  if (reserved === true) {
+    return (
+      <div id="home-page" className='container reserved'>
+        <ul id="search-results">
+          <div className="d-flex">
+            <i className={locationType} />
+            <div>
+              <h3 className=''>{availableLocations.locationName}</h3>
+              <p className=''>{availableLocations.locationAddress}</p>
+            </div>
+          </div>
+        </ul>
+      </div>
+    );
+  } else {
+    return (
+      <div id="home-page" className='container'>
+
+        <div id="search-home">
+          <Combobox onSelect={handleSelect}>
+            <ComboboxInput value={value} onChange={e => setValue(e.target.value)} disabled={!ready}
             className="combobox-input" placeholder='Enter Location' />
-          <ComboboxPopover className='list'>
-            <ComboboxList>
-              {status === 'OK' &&
+            <ComboboxPopover className='list'>
+              <ComboboxList>
+                {status === 'OK' &&
             data.map(({ placeId, description }) =>
               <ComboboxOption key={ placeId } value={ description } />)}
-            </ComboboxList>
-          </ComboboxPopover>
-        </Combobox>
-      </div>
-      <button onClick={handleClick} href="#request" className="btn btn-dark request">
-        Request Now
-      </button>
+              </ComboboxList>
+            </ComboboxPopover>
+          </Combobox>
+        </div>
+        <button onClick={handleClick} href="#request" className="btn btn-dark request">
+          Request Now
+        </button>
 
-      {availableLocations === null &&
+        {availableLocations === null &&
         <>
         </>
       }
 
-      {availableLocations === 'none' &&
+        {availableLocations === 'none' &&
         <div id="home-page" className='container'>
           <div>
             <h2>No Nearby Locations</h2>
@@ -124,7 +130,7 @@ function PlacesAutocomplete() {
         </div>
       }
 
-      {availableLocations !== null && availableLocations !== 'none' &&
+        {availableLocations !== null && availableLocations !== 'none' &&
         <ul id="search-results">
           <div className="d-flex">
             <i className={locationType} />
@@ -137,6 +143,7 @@ function PlacesAutocomplete() {
         </ul>
       }
 
-    </div>
-  );
+      </div>
+    );
+  }
 }
