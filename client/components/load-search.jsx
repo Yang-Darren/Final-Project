@@ -84,65 +84,80 @@ function PlacesAutocomplete() {
 
   if (reserved === true) {
     return (
-      <div id="home-page" className='container reserved'>
-        <ul id="search-results">
-          <div className="d-flex">
-            <i className={locationType} />
-            <div>
-              <h3 className=''>{availableLocations.locationName}</h3>
-              <p className=''>{availableLocations.locationAddress}</p>
-            </div>
+      <div>
+        <div id="home-page" className='container'>
+          <div>
+            <h1>Reservation Confirmed</h1>
           </div>
-        </ul>
+        </div>
+        <div id="home-page" className='container reserved'>
+          <ul id="search-results">
+            <div className="d-flex">
+              <i className={locationType} />
+              <div>
+                <h3>{availableLocations.locationName}</h3>
+                <p>{availableLocations.locationAddress}</p>
+                <button className='btn btn-dark'>Cancel Reservation</button>
+              </div>
+            </div>
+          </ul>
+        </div>
       </div>
     );
   } else {
     return (
-      <div id="home-page" className='container'>
-
-        <div id="search-home">
-          <Combobox onSelect={handleSelect}>
-            <ComboboxInput value={value} onChange={e => setValue(e.target.value)} disabled={!ready}
-            className="combobox-input" placeholder='Enter Location' />
-            <ComboboxPopover className='list'>
-              <ComboboxList>
-                {status === 'OK' &&
-            data.map(({ placeId, description }) =>
-              <ComboboxOption key={ placeId } value={ description } />)}
-              </ComboboxList>
-            </ComboboxPopover>
-          </Combobox>
-        </div>
-        <button onClick={handleClick} href="#request" className="btn btn-dark request">
-          Request Now
-        </button>
-
-        {availableLocations === null &&
-        <>
-        </>
-      }
-
-        {availableLocations === 'none' &&
+      <div>
         <div id="home-page" className='container'>
           <div>
-            <h2>No Nearby Locations</h2>
+            <h1>View Nearby Locations</h1>
           </div>
         </div>
+        <div id="home-page" className='container'>
+
+          <div id="search-home">
+            <Combobox onSelect={handleSelect}>
+              <ComboboxInput value={value} onChange={e => setValue(e.target.value)} disabled={!ready}
+            className="combobox-input" placeholder='Enter Location' />
+              <ComboboxPopover className='list'>
+                <ComboboxList>
+                  {status === 'OK' &&
+            data.map(({ placeId, description }) =>
+              <ComboboxOption key={ placeId } value={ description } />)}
+                </ComboboxList>
+              </ComboboxPopover>
+            </Combobox>
+          </div>
+          <button onClick={handleClick} href="#request" className="btn btn-dark request">
+            Request Now
+          </button>
+
+          {availableLocations === null &&
+          <>
+          </>
       }
 
-        {availableLocations !== null && availableLocations !== 'none' &&
-        <ul id="search-results">
-          <div className="d-flex">
-            <i className={locationType} />
+          {availableLocations === 'none' &&
+          <div id="home-page" className='container'>
             <div>
-              <h3 className=''>{availableLocations.locationName}</h3>
-              <p className=''>{availableLocations.locationAddress}</p>
-              <button onClick={handleReserve} className='btn btn-light'>Reserve Now</button>
+              <h2>No Nearby Locations</h2>
             </div>
           </div>
-        </ul>
       }
 
+          {availableLocations !== null && availableLocations !== 'none' &&
+          <ul id="search-results">
+            <div className="d-flex">
+              <i className={locationType} />
+              <div>
+                <h3 className=''>{availableLocations.locationName}</h3>
+                <p className=''>{availableLocations.locationAddress}</p>
+                <button onClick={handleReserve} className='btn btn-light'>Reserve Now</button>
+              </div>
+            </div>
+          </ul>
+      }
+
+        </div>
       </div>
     );
   }
