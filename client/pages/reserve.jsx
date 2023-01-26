@@ -1,15 +1,35 @@
 import React from 'react';
 import AppContext from '../lib/app-context';
 import AuthForm from '../components/auth-form';
-import Redirect from '../components/redirect';
 
 export default class Reserve extends React.Component {
   render() {
 
     const { user, route, handleSignIn } = this.context;
 
-    if (user) return <Redirect to="" />;
-
+    if (user) {
+      return (
+        <div>
+          <div id="home-page" className='container'>
+            <div>
+              <h1>Reservation Confirmed</h1>
+            </div>
+          </div>
+          <div id="home-page" className='container reserved'>
+            <ul id="search-results">
+              <div className="d-flex">
+                <i className="" />
+                <div>
+                  <h3>test</h3>
+                  <p>test</p>
+                  <button className='btn btn-dark'>Cancel Reservation</button>
+                </div>
+              </div>
+            </ul>
+          </div>
+        </div>
+      );
+    }
     const welcomeMessage = route.path === 'sign-in'
       ? 'Please sign in to continue'
       : 'Create an account';
